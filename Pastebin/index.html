@@ -22,45 +22,42 @@
       --btn-hover: #dc2626;
       --muted: #6b7280;
     }
-
     * { box-sizing:border-box; margin:0; padding:0 }
     body {
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, Inter, Ubuntu, Arial, sans-serif;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Ubuntu, Arial, sans-serif;
       background: var(--bg);
       color: var(--fg);
-      font-size: 1.15rem; /* bigger base text */
-      -webkit-font-smoothing:antialiased;
-      -moz-osx-font-smoothing:grayscale;
+      font-size: 1.2rem; /* bigger base text */
     }
 
     header { padding:2rem 1rem; text-align:center; position:relative }
     h1 { font-size:clamp(2.5rem,5vw,3.2rem); margin-bottom:.3rem }
-    .sub { color:var(--muted); font-size:1.05rem }
+    .sub { color:var(--muted); font-size:1.2rem }
 
     .theme-toggle { position:absolute; right:1rem; top:1.5rem; display:flex; gap:.5rem }
     .icon-btn { background:transparent; border:0; cursor:pointer; padding:.5rem }
     .icon { width:24px; height:24px; stroke:var(--fg); }
 
-    .container { max-width:1000px; margin:0 auto; padding:2rem 1rem; display:grid; gap:1.25rem; grid-template-columns: 1fr; }
+    .container { max-width:1000px; margin:0 auto; padding:2rem 1rem; display:grid; gap:1.5rem }
     .card {
       background: var(--card);
       border-radius:18px;
       box-shadow:0 6px 20px rgba(0,0,0,.2);
-      padding:1.6rem;
+      padding:2rem;
     }
-    .card h2 { font-size:1.75rem; margin-bottom:.6rem }
-    .card p { color:var(--muted); margin-bottom:1rem; font-size:1.05rem }
+    .card h2 { font-size:1.8rem; margin-bottom:.8rem }
+    .card p { color:var(--muted); margin-bottom:1.2rem; font-size:1.2rem }
 
     .btn {
       background: var(--btn);
       color:#fff;
       border:none;
       border-radius:12px;
-      padding:.85rem 1.35rem;
-      font-size:1.05rem;
+      padding:.9rem 1.5rem;
+      font-size:1.1rem;
       font-weight:600;
       cursor:pointer;
-      transition: background .18s ease, transform .08s ease;
+      transition: background .2s ease, transform .1s ease;
       text-decoration:none;
       display:inline-block;
     }
@@ -70,59 +67,34 @@
       background:#0b0f14;
       border-radius:10px;
       padding:1rem;
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", monospace;
+      font-family: monospace;
       font-size:1.05rem; /* bigger script font */
       overflow-x:auto;
       margin-bottom:1rem;
       white-space:pre;
-      line-height:1.4;
     }
-    .theme-light .script-box { background:#f9fafb; color:var(--fg) }
+    .theme-light .script-box { background:#f9fafb }
 
-    /* Features formatting */
-    .features {
+    ul.features {
       margin-top:1rem;
-      font-size:1.03rem;
-      line-height:1.5;
-      color:var(--fg);
+      padding-left:1.5rem;
+      font-size:1.1rem;
     }
-    .features h4 {
-      margin-top:0.8rem;
-      margin-bottom:0.4rem;
-      font-size:1.05rem;
-      color:var(--fg);
-      letter-spacing:0.3px;
-    }
-    .features strong { display:block; margin-top:0.45rem; margin-bottom:0.25rem; font-weight:700; }
-    .features ul { margin-left:1.1rem; margin-bottom:0.6rem; }
-    .features ul li { margin-bottom:0.4rem; color:var(--fg); }
+    ul.features li { margin-bottom:.6rem }
 
-    .legend {
-      margin-top:1rem;
-      color:var(--muted);
-      font-size:0.95rem;
-      line-height:1.3;
-    }
-
-    footer { text-align:center; padding:1.6rem 1rem; font-size:1rem; color:var(--muted) }
-
-    /* Responsive tweaks */
-    @media (min-width:900px) {
-      .container { grid-template-columns: repeat(2, 1fr); }
-      .card { padding:1.8rem; }
-    }
+    footer { text-align:center; padding:2rem 1rem; font-size:1rem; color:var(--muted) }
   </style>
 </head>
 <body>
   <header>
     <div class="theme-toggle">
-      <button class="icon-btn" id="lightBtn" title="Light mode" aria-label="Light mode">
+      <button class="icon-btn" id="lightBtn" title="Light mode">
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <circle cx="12" cy="12" r="4"/>
           <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
         </svg>
       </button>
-      <button class="icon-btn" id="darkBtn" title="Dark mode" aria-label="Dark mode">
+      <button class="icon-btn" id="darkBtn" title="Dark mode">
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
           <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
         </svg>
@@ -134,139 +106,121 @@
 
   <div class="container">
 
-    <!-- Script 1 (copyable + full features) -->
-    <section class="card" aria-labelledby="rx-title">
-      <h2 id="rx-title">RX Forsakened</h2>
-      <p>Ready to use. Click below to copy.</p>
-
-      <div class="script-box" id="script1" aria-label="RX Forsakened script">
+    <!-- Script 1 (copyable + features) -->
+<section class="card">
+  <h2>RX Forsakened</h2>
+  <p>Ready to use. Click below to copy.</p>
+  <div class="script-box" id="script1">
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Redexe19/RXGUIV1/refs/heads/main/RX%20Forsaken/RX_Forsakened"))()
-      </div>
+  </div>
+  <button class="btn" onclick="copyScript('script1')">Copy Script</button>
 
-      <button class="btn" onclick="copyScript('script1')">Copy Script</button>
+  <h3 style="margin-top:1.5rem; font-size:1.5rem;">Features</h3>
+  <div class="features">
+    
+    <h4>[ Info ]</h4>
+    <ul>
+      <li>Contains all creator information and script version</li>
+    </ul>
 
-      <div class="features" aria-live="polite">
-        <h3 style="margin-top:1.25rem; font-size:1.25rem;">Features</h3>
+    <h4>[ Main ]</h4>
+    <ul>
+      <li><b>Character</b></li>
+      <ul>
+        <li>Infinite Stamina</li>
+        <li>Editable Stamina / Limit / Gain / Loss</li>
+        <li>Editable Sprint Speed</li>
+      </ul>
+      <li><b>Automation</b></li>
+      <ul>
+        <li>Delay, Auto Generator</li>
+        <li>Complete Generator</li>
+      </ul>
+      <li><b>Others</b></li>
+      <ul>
+        <li>Aimlock</li>
+      </ul>
+    </ul>
 
-        <h4>[ Info ]</h4>
-        <ul>
-          <li>Contains all creator information and script version</li>
-        </ul>
+    <h4>[ Visual ]</h4>
+    <ul>
+      <li><b>Main</b></li>
+      <ul>
+        <li>Generator ESP — Fake & Real, customizable color</li>
+        <li>Tools ESP — Medkit & BloxyCola, customizable color</li>
+        <li>Players ESP — Survivor & Killer, customizable color</li>
+      </ul>
+      <li><b>Others</b></li>
+      <ul>
+        <li>Fullbright</li>
+      </ul>
+    </ul>
 
-        <h4>[ Main ]</h4>
-        <strong>Character</strong>
-        <ul>
-          <li>Infinite Stamina</li>
-          <li>Editable Stamina / Limit / Gain / Loss</li>
-          <li>Editable Sprint Spreed</li>
-        </ul>
+    <h4>[ Movement ]</h4>
+    <ul>
+      <li><b>Main</b></li>
+      <ul>
+        <li>Walking Speed (Slider 16–25)</li>
+        <li>CFrame Speed (0 – ∞)</li>
+        <li>Jump Button</li>
+        <li>Jump Power (0 – ∞)</li>
+      </ul>
+      <li><b>Others</b></li>
+      <ul>
+        <li>Noclip (Re-execute to toggle)</li>
+      </ul>
+    </ul>
 
-        <strong>Automation</strong>
-        <ul>
-          <li>Delay, Auto Generator</li>
-          <li>Complete Generator</li>
-        </ul>
+    <h4>[ Teleports ]</h4>
+    <ul>
+      <li><b>Main</b></li>
+      <ul>
+        <li>Teleport to Generator / Tool / Survivor / Killer</li>
+      </ul>
+      <li><b>Waypoint System</b></li>
+      <ul>
+        <li>Set Waypoint Position</li>
+        <li>Waypoints (Dropdown)</li>
+        <li>Show Waypoints</li>
+      </ul>
+      <li><b>Teleports</b></li>
+      <ul>
+        <li>Waypoints 1 – 10</li>
+      </ul>
+    </ul>
 
-        <strong>Others</strong>
-        <ul>
-          <li>Aimlock</li>
-        </ul>
+    <h4>[ Others ]</h4>
+    <ul>
+      <li><b>Utilities</b></li>
+      <ul>
+        <li>Anti AFK</li>
+        <li>Camera Zoom (0 – ∞)</li>
+      </ul>
+      <li><b>Server</b></li>
+      <ul>
+        <li>Server Hop</li>
+        <li>Rejoin</li>
+      </ul>
+      <li><b>Game</b></li>
+      <ul>
+        <li>Shitify Game / Reduce Graphics</li>
+      </ul>
+    </ul>
 
-        <h4>[ Visual ]</h4>
-        <strong>Main</strong>
-        <ul>
-          <li>Generator ESP
-            <ul>
-              <li>Fake Generator and Generator, Color is customizable</li>
-            </ul>
-          </li>
-          <li>Tools ESP
-            <ul>
-              <li>Medkit and BloxyCola, Color is customizable</li>
-            </ul>
-          </li>
-          <li>Players ESP
-            <ul>
-              <li>Survivor and Killer, Color is customizable</li>
-            </ul>
-          </li>
-        </ul>
+    <h4>[ Out Of Context ]</h4>
+    <ul>
+      <li><b>Automation</b></li>
+      <ul>
+        <li>(Chance) Auto Flip Coin</li>
+      </ul>
+      <li><b>Character</b></li>
+      <ul>
+        <li>Jason Autohit (Can’t be disabled)</li>
+      </ul>
+    </ul>
 
-        <strong>Others</strong>
-        <ul>
-          <li>Fullbright</li>
-        </ul>
-
-        <h4>[ Movement ]</h4>
-        <strong>Main</strong>
-        <ul>
-          <li>walking speed, Slider 16 - 25</li>
-          <li>cframe speed, Value 0 - infinity</li>
-          <li>Jump Button</li>
-          <li>Jump Power, Value 0 - infinity</li>
-        </ul>
-
-        <strong>Others</strong>
-        <ul>
-          <li>Noclip (Re-Execute to toggle)</li>
-        </ul>
-
-        <h4>[ Teleports ]</h4>
-        <strong>Main</strong>
-        <ul>
-          <li>Teleport To Generator / Tool / Survivor / Killer</li>
-        </ul>
-
-        <strong>Waypoint System</strong>
-        <ul>
-          <li>Set Waypoint Position</li>
-          <li>Waypoints (Dropdown)</li>
-          <li>Show Waypoints</li>
-        </ul>
-
-        <strong>Teleports</strong>
-        <ul>
-          <li>Waypoints 1 - 10</li>
-        </ul>
-
-        <h4>[ Others ]</h4>
-        <strong>Utilities</strong>
-        <ul>
-          <li>Anti Ark</li>
-          <li>Camera Zoom, Value 0 - infinity</li>
-        </ul>
-
-        <strong>Server</strong>
-        <ul>
-          <li>Server Hop</li>
-          <li>Rejoin</li>
-        </ul>
-
-        <strong>Game</strong>
-        <ul>
-          <li>Shitify Game / Reduce Graphics</li>
-        </ul>
-
-        <h4>[ Out Of Context ]</h4>
-        <strong>Automation</strong>
-        <ul>
-          <li>(Chance) Auto Flip Coin</li>
-        </ul>
-
-        <strong>Character</strong>
-        <ul>
-          <li>Jason Autohit (Can't be disabled)</li>
-        </ul>
-
-        <div class="legend">
-          <div><strong>"[ ]"</strong> - Tabs</div>
-          <div><strong>">"</strong> - Sections</div>
-          <div><strong>"•"</strong> - Features</div>
-          <div><small>(Sometimes &gt; just contain the whole tabs explanation)</small></div>
-          <div><strong>"-"</strong> - Additional info</div>
-        </div>
-      </div>
-    </section>
+  </div>
+</section>
 
     <!-- Script 2 -->
     <section class="card">
@@ -293,14 +247,12 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/Redexe19/RXGUIV1/refs
   </footer>
 
   <script>
-    // year
     document.getElementById('year').textContent = new Date().getFullYear();
 
     // theme
     const body = document.body;
     const saved = localStorage.getItem('theme');
     if (saved === 'light') body.classList.add('theme-light');
-
     const setTheme = (mode) => {
       if (mode === 'light') {
         body.classList.add('theme-light');
@@ -310,41 +262,15 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/Redexe19/RXGUIV1/refs
         localStorage.setItem('theme','dark');
       }
     };
-
     document.getElementById('lightBtn').addEventListener('click', () => setTheme('light'));
     document.getElementById('darkBtn').addEventListener('click', () => setTheme('dark'));
     if (!saved) setTheme('dark');
 
     // copy function
     function copyScript(id) {
-      const el = document.getElementById(id);
-      const text = el ? el.innerText.trim() : '';
-      if (!text) {
-        alert('No script found to copy.');
-        return;
-      }
-      // copy
+      const text = document.getElementById(id).innerText;
       navigator.clipboard.writeText(text).then(() => {
-        // small non-blocking notification
-        const old = document.activeElement;
-        alert('Script copied to clipboard!');
-        if (old) old.focus();
-      }).catch((err) => {
-        // fallback for older browsers
-        const textarea = document.createElement('textarea');
-        textarea.value = text;
-        textarea.setAttribute('readonly', '');
-        textarea.style.position = 'absolute';
-        textarea.style.left = '-9999px';
-        document.body.appendChild(textarea);
-        textarea.select();
-        try {
-          document.execCommand('copy');
-          alert('Script copied to clipboard!');
-        } catch (e) {
-          alert('Failed to copy script. Please select and copy manually.');
-        }
-        document.body.removeChild(textarea);
+        alert("Script copied to clipboard!");
       });
     }
   </script>
