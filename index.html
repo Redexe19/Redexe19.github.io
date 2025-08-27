@@ -1,0 +1,234 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lua & Roblox Hub</title>
+  <meta name="description" content="A hub for Lua obfuscation, Lua scripts, Roblox executors info, and my own Roblox projects." />  <style>
+    /* ---------- THEME COLORS (GRAY-FOCUSED) ---------- */
+    :root {
+      --fg: #111827;           /* gray-900 */
+      --muted: #6b7280;        /* gray-500 */
+      --bg: #f3f4f6;           /* gray-100 */
+      --bg-grad-top:#eef2f7;   /* subtle top gradient */
+      --card: #ffffff;         /* white */
+      --accent: #4b5563;       /* gray-600 */
+      --accent-2:#374151;      /* gray-700 */
+      --warn:#ef4444;          /* red-500 */
+      --btn:#374151;           /* buttons default */
+      --btn-hover:#1f2937;     /* darker gray */
+      --ring: rgba(0,0,0,.08);
+    }
+
+    /* Dark theme overrides */
+    .theme-dark {
+      --fg: #e5e7eb;           /* gray-200 */
+      --muted: #9ca3af;        /* gray-400 */
+      --bg: #0f141a;           /* deep slate */
+      --bg-grad-top:#111827;   
+      --card: #171c22;         /* card dark */
+      --accent: #9ca3af;       /* gray-400 */
+      --accent-2:#d1d5db;      /* gray-300 */
+      --warn:#f87171;          /* red-400 */
+      --btn:#374151;           /* still dark */
+      --btn-hover:#4b5563;
+      --ring: rgba(255,255,255,.08);
+    }
+
+    * { box-sizing:border-box; margin:0; padding:0 }
+    html, body { height:100% }
+
+    body {
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Ubuntu, Arial, sans-serif;
+      color: var(--fg);
+      background: linear-gradient(180deg, var(--bg-grad-top), var(--bg));
+    }
+
+    a { color: inherit }
+
+    header { padding:2.25rem 1rem; text-align:center; position:relative }
+    h1 { font-size:clamp(1.8rem,3vw,2.6rem); margin-bottom:.35rem; letter-spacing:.2px }
+    .sub { color:var(--muted); max-width:800px; margin:0 auto }
+
+    /* Theme toggle */
+    .theme-toggle {
+      position:absolute; right:1rem; top:1.25rem; display:flex; align-items:center; gap:.5rem;
+    }
+    .icon-btn {
+      appearance:none; border:0; background:transparent; cursor:pointer; border-radius:10px; padding:.5rem; 
+      box-shadow:0 0 0 0 var(--ring); transition: box-shadow .18s ease, transform .1s ease;
+    }
+    .icon-btn:focus-visible { outline:none; box-shadow:0 0 0 4px var(--ring) }
+    .icon { width:22px; height:22px; display:block }
+
+    .container { max-width:1000px; margin:0 auto; padding:1rem 1rem 2rem }
+    .grid { display:grid; gap:1rem }
+    @media (min-width: 900px) {
+      .grid { grid-template-columns: repeat(2, 1fr) }
+    }
+
+    .card {
+      background:var(--card);
+      border-radius:18px;
+      box-shadow:0 10px 30px rgba(0,0,0,.10);
+      padding:1.5rem;
+      border:1px solid rgba(0,0,0,.05);
+    }
+
+    h2 { margin-bottom:.6rem; font-size:1.1rem; letter-spacing:.2px }
+    p { line-height:1.6 }
+
+    .btns { display:flex; flex-wrap:wrap; gap:.75rem; margin-top:.65rem }
+    .btn {
+      appearance:none; border:0; border-radius:12px; padding:.85rem 1.2rem; font-weight:600; cursor:pointer; 
+      transition: background .18s ease, transform .06s ease; background:var(--btn); color:#fff;
+    }
+    .btn:hover { background:var(--btn-hover) }
+    .btn:active { transform: translateY(1px) }
+
+    .btn-alt { background:#e5e7eb; color:#111827 }
+    .theme-dark .btn-alt { background:#2b323b; color:#e5e7eb }
+    .btn-alt:hover { background:#d1d5db }
+    .theme-dark .btn-alt:hover { background:#3a414b }
+    .btn-disabled { background:#e5e7eb; color:#9ca3af; cursor:not-allowed }
+    .theme-dark .btn-disabled { background:#2b323b; color:#6b7280 }
+
+    .source-button {
+      display:inline-block; margin-top:1rem; padding:.7rem 1.2rem; background-color:#2b2f36; color:#fff;
+      text-decoration:none; border-radius:8px; transition: background .18s ease;
+    }
+    .source-button:hover { background:#1f232a }
+
+    footer { padding:2rem 1rem; text-align:center; color:var(--muted); font-size:.9rem }
+
+    /* Small helper rows */
+    .list { margin-top:.6rem }
+    .item { display:flex; align-items:center; justify-content:space-between; padding:.8rem 1rem; border-radius:12px; background:rgba(0,0,0,.03) }
+    .theme-dark .item { background:rgba(255,255,255,.04) }
+    .item + .item { margin-top:.5rem }
+    .tag { font-size:.75rem; color:var(--muted) }
+  </style></head>
+<body>  <!-- HEADER -->  <header>
+    <div class="theme-toggle" aria-label="Theme toggle">
+      <!-- Light (sun) -->
+      <button class="icon-btn" id="lightBtn" title="Light mode" aria-label="Light mode">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+        </svg>
+      </button>
+      <!-- Dark (moon) -->
+      <button class="icon-btn" id="darkBtn" title="Dark mode" aria-label="Dark mode">
+        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+    </div><h1>Lua & Roblox Hub</h1>
+<div class="sub">Everything in one place: Lua obfuscation resources, Lua/Roblox scripts, notes on executors, and my own projects.</div>
+
+  </header>  <!-- MAIN CONTENT -->  <div class="container grid"><!-- LUA OBFUSCATION -->
+<section class="card">
+  <h2>Lua Obfuscation</h2>
+  <p>Guides, comparisons, and best practices for protecting your Lua code. For educational and protective purposes only.</p>
+  <div class="btns">
+    <a class="btn" href="#" target="_blank" rel="noopener">Obfuscation Guide</a>
+    <a class="btn-alt btn" href="#" target="_blank" rel="noopener">Compare Obfuscators</a>
+    <button class="btn-disabled" disabled>More Soon</button>
+  </div>
+  <div class="list">
+    <div class="item"><span>String encryption basics</span><span class="tag">article</span></div>
+    <div class="item"><span>Control-flow tricks</span><span class="tag">notes</span></div>
+  </div>
+</section>
+
+<!-- LUA SCRIPTS -->
+<section class="card">
+  <h2>Lua Scripts</h2>
+  <p>Reusable Lua snippets and utilities I made. Clean, documented, and ready to drop into projects.</p>
+  <div class="btns">
+    <a class="btn" href="#" target="_blank" rel="noopener">All Lua Scripts</a>
+    <a class="btn-alt btn" href="#" target="_blank" rel="noopener">Repo (GitHub)</a>
+  </div>
+  <div class="list">
+    <div class="item"><span>Table deep-merge utility</span><span class="tag">lib</span></div>
+    <div class="item"><span>Lightweight signal/event</span><span class="tag">lib</span></div>
+  </div>
+</section>
+
+<!-- ROBLOX EXECUTORS (INFO) -->
+<section class="card">
+  <h2>Roblox Executors — Info</h2>
+  <p>Neutral, informational notes about executor concepts, compatibility, and safety. No downloads hosted here.</p>
+  <div class="btns">
+    <a class="btn" href="#" target="_blank" rel="noopener">Executor Concepts</a>
+    <a class="btn-alt btn" href="#" target="_blank" rel="noopener">Safety & Risks</a>
+  </div>
+  <div class="list">
+    <div class="item"><span>Environment differences (LuaU vs Lua)</span><span class="tag">reference</span></div>
+    <div class="item"><span>API shims & compatibility</span><span class="tag">guide</span></div>
+  </div>
+</section>
+
+<!-- MY ROBLOX SCRIPTS -->
+<section class="card">
+  <h2>My Roblox Scripts</h2>
+  <p>Showcase of scripts I wrote for Roblox experiences. Built with learning in mind.</p>
+  <div class="btns">
+    <a class="btn" href="#" target="_blank" rel="noopener">Script Gallery</a>
+    <a class="btn-alt btn" href="#" target="_blank" rel="noopener">How-To & Docs</a>
+    <button class="btn-disabled" disabled>More Soon</button>
+  </div>
+  <div class="list">
+    <div class="item"><span>ESP Billboard overlay</span><span class="tag">showcase</span></div>
+    <div class="item"><span>Graphing/utility tools</span><span class="tag">tools</span></div>
+  </div>
+</section>
+
+<!-- ABOUT / SOURCE -->
+<section class="card" style="grid-column:1/-1">
+  <h2>About This Website</h2>
+  <p>
+    Built with <strong>HTML, CSS, and vanilla JavaScript</strong>. Designed to be fast, readable, and responsive on GitHub Pages.
+    All materials are for educational purposes. Please respect platform Terms of Service and local laws.
+  </p>
+  <a href="#" target="_blank" class="source-button" rel="noopener">View Source Code</a>
+</section>
+
+<!-- CREATOR CARD -->
+<section class="card" style="grid-column:1/-1">
+  <h2>About the Creator</h2>
+  <p>
+    Made by <strong>RX</strong>. I experiment with Lua, Roblox scripting, and code protection techniques — and share what I learn.
+  </p>
+</section>
+
+  </div>  <!-- FOOTER -->  <footer>
+    © <span id="year"></span> Lua & Roblox Hub | Made by RX
+  </footer>  <script>
+    // --- Year ---
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // --- Theme persistence ---
+    const body = document.body;
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark') body.classList.add('theme-dark');
+
+    const setTheme = (mode) => {
+      if (mode === 'dark') {
+        body.classList.add('theme-dark');
+        localStorage.setItem('theme','dark');
+      } else {
+        body.classList.remove('theme-dark');
+        localStorage.setItem('theme','light');
+      }
+    };
+
+    document.getElementById('lightBtn').addEventListener('click', () => setTheme('light'));
+    document.getElementById('darkBtn').addEventListener('click', () => setTheme('dark'));
+
+    // Optional: honor system preference on first visit
+    if (!saved) {
+      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+      setTheme(prefersDark ? 'dark' : 'light');
+    }
+  </script></body>
+</html>
