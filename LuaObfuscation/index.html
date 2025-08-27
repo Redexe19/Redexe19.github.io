@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Lua Obfuscator</title>
+  <meta name="description" content="Paste Lua code and obfuscate it into encoded output." />
+
+  <style>
+    :root {
+      --fg-light:#0f172a;
+      --fg-dark:#f8fafc;
+      --bg-light:#f8fafc;
+      --bg-dark:#0f172a;
+      --card-light:#ffffff;
+      --card-dark:#1e293b;
+      --accent:#dc2626;
+      --muted-light:#475569;
+      --muted-dark:#94a3b8;
+    }
+    * { box-sizing:border-box; transition: background 0.3s, color 0.3s }
+    body {
+      margin:0;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Ubuntu, Arial, sans-serif;
+    }
+    body.light { background: linear-gradient(180deg, #fff5f5, #fff); color: var(--fg-light); }
+    body.dark { background: linear-gradient(180deg, #0f172a, #1e293b); color: var(--fg-dark); }
+    header { padding:2rem 1rem; text-align:center }
+    h1 { margin:0 0 .25rem; font-size:clamp(1.5rem,2.6vw,2.2rem) }
+    .sub { color:var(--muted-light) }
+    body.dark .sub { color:var(--muted-dark) }
+    .container { max-width:980px; margin:0 auto; padding:1rem }
+    .grid { display:grid; grid-template-columns:1fr; gap:1rem }
+    @media (min-width: 900px) { .grid { grid-template-columns: 420px 1fr } }
+    .card { border-radius:18px; box-shadow:0 10px 30px rgba(2,6,23,.12); padding:1rem; }
+    body.light .card { background:var(--card-light) }
+    body.dark .card { background:var(--card-dark) }
+    label { font-weight:600; display:block; margin:.5rem 0 .25rem }
+    textarea {
+      width:100%; padding:.7rem;
+      border:1px solid #e2e8f0; border-radius:12px;
+      font-size:1rem; min-height:180px; resize: vertical;
+    }
+    body.dark textarea { background:#0f172a; border:1px solid #334155; color:#f8fafc; }
+    .btns { display:flex; gap:.5rem; flex-wrap:wrap; margin-top:1rem }
+    button {
+      appearance:none; border:0; border-radius:12px;
+      padding:.7rem 1rem; font-weight:700; cursor:pointer;
+    }
+    .primary { background:var(--accent); color:#fff }
+    .secondary { background:#e2e8f0 }
+    body.dark .secondary { background:#334155; color:#f8fafc }
+    .preview {
+      font-family: monospace;
+      padding:.75rem 1rem;
+      background:#f8fafc;
+      border:1px dashed #e2e8f0;
+      border-radius:12px;
+      margin-top:.75rem;
+      white-space: pre-wrap;
+    }
+    body.dark .preview { background:#1e293b; border:1px dashed #475569; color:#f8fafc; }
+    footer { padding:2rem 1rem; text-align:center; font-size:.9rem }
+    footer.light { color:var(--muted-light) }
+    footer.dark { color:var(--muted-dark) }
+    .mode-toggle {
+      position: fixed; top: 15px; right: 20px;
+      font-size: 16px; font-weight: bold;
+      text-decoration: none; color: #fff;
+      background: var(--accent); padding: 6px 14px;
+      border-radius: 10px; box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body class="dark">
+  <button class="mode-toggle" id="modeBtn">☀ Light</button>
+
+  <header>
+    <h1>Lua Obfuscator</h1>
+    <div class="sub">Paste your <strong>Lua/Roblox code</strong> below to generate obfuscated output.</div>
+  </header>
+
+  <div class="container grid">
+    <section class="card">
+      <h2 style="margin-top:0">Input</h2>
+      <label for="code">Lua Script</label>
+      <textarea id="code" placeholder="Paste your Lua code here..."></textarea>
+      <div class="btns">
+        <button class="primary" id="obfuscateBtn">Obfuscate</button>
+        <button class="secondary" id="binaryBtn">Binary Mode</button>
+        <button class="secondary" id="clearBtn">Clear</button>
+      </div>
+    </section>
+
+    <section class="card steps">
+      <h2 style="margin-top:0">Output</h2>
+      <div id="output" class="preview">Your obfuscated code will appear here.</div>
+    </section>
+  </div>
+
+  <footer id="footer" class="dark">
+    Made with ❤️ | Lua Obfuscator (basic encoding)
+  </footer>
+
+  <script>
+    const $ = sel => document.querySelector(sel);
+    const body = document.body;
+    const modeBtn = $('#modeBtn');
+    const footer = $('#footer');
+
+    // Toggle Light/Dark
+    modeBtn.addEventListener('click', () => {
+      if (body.classList.contains('dark')) {
+        body.classList.replace('dark', 'light');
+        footer.classList.replace('dark', 'light');
+        modeBtn.textContent = "🌙 Dark";
+      } else {
+        body.classList.replace('light', 'dark');
+        footer.classList.replace('light', 'dark');
+        modeBtn.textContent = "☀ Light";
+      }
+    });
+
+    // Base64 Encode
+    const toBase64 = str => btoa(unescape(encodeURIComponent(str)));
+
+    // Binary Encode
+    const toBinary = str => {
+      return str.split('').map(c => c.charCodeAt(0).toString(2).padStart(8, '0')).join(' ');
+    };
+
+    // Normal obfuscate (Base64 loadstring)
+    $('#obfuscateBtn').addEventListener('click', () => {
+      const code = $('#code').value.trim();
+      if (!code) return $('#output').textContent = "⚠️ Please paste some Lua code.";
+      const encoded = toBase64(code);
+      $('#output').textContent = `loadstring(game:GetService("HttpService"):Base64Decode("${encoded}"))()`;
+    });
+
+    // Binary obfuscate
+    $('#binaryBtn').addEventListener('click', () => {
+      const code = $('#code').value.trim();
+      if (!code) return $('#output').textContent = "⚠️ Please paste some Lua code.";
+      const binary = toBinary(code);
+      $('#output').textContent = `-- Binary Encoded\nloadstring([[${binary}]])()`;
+    });
+
+    // Clear
+    $('#clearBtn').addEventListener('click', () => {
+      $('#code').value = "";
+      $('#output').textContent = "Your obfuscated code will appear here.";
+    });
+  </script>
+</body>
+</html>
