@@ -1,4 +1,4 @@
-# RX's Website
+# RX EXPLOITS
 
 This is my official website that serves as a hub for my Roblox scripts, executors, Lua obfuscation methods, and personal projects.
 
