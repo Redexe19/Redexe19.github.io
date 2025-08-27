@@ -27,15 +27,16 @@
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Ubuntu, Arial, sans-serif;
       background: var(--bg);
       color: var(--fg);
+      font-size: 1.2rem; /* bigger base text */
     }
 
     header { padding:2rem 1rem; text-align:center; position:relative }
-    h1 { font-size:clamp(2rem,4vw,2.8rem); margin-bottom:.3rem }
-    .sub { color:var(--muted) }
+    h1 { font-size:clamp(2.5rem,5vw,3.2rem); margin-bottom:.3rem }
+    .sub { color:var(--muted); font-size:1.2rem }
 
     .theme-toggle { position:absolute; right:1rem; top:1.5rem; display:flex; gap:.5rem }
     .icon-btn { background:transparent; border:0; cursor:pointer; padding:.5rem }
-    .icon { width:22px; height:22px; stroke:var(--fg); }
+    .icon { width:24px; height:24px; stroke:var(--fg); }
 
     .container { max-width:1000px; margin:0 auto; padding:2rem 1rem; display:grid; gap:1.5rem }
     .card {
@@ -44,15 +45,16 @@
       box-shadow:0 6px 20px rgba(0,0,0,.2);
       padding:2rem;
     }
-    .card h2 { margin-bottom:.5rem }
-    .card p { color:var(--muted); margin-bottom:1rem }
+    .card h2 { font-size:1.8rem; margin-bottom:.8rem }
+    .card p { color:var(--muted); margin-bottom:1.2rem; font-size:1.2rem }
 
     .btn {
       background: var(--btn);
       color:#fff;
       border:none;
       border-radius:12px;
-      padding:.7rem 1.2rem;
+      padding:.9rem 1.5rem;
+      font-size:1.1rem;
       font-weight:600;
       cursor:pointer;
       transition: background .2s ease, transform .1s ease;
@@ -66,14 +68,21 @@
       border-radius:10px;
       padding:1rem;
       font-family: monospace;
-      font-size:.9rem;
+      font-size:1.05rem; /* bigger script font */
       overflow-x:auto;
       margin-bottom:1rem;
       white-space:pre;
     }
     .theme-light .script-box { background:#f9fafb }
 
-    footer { text-align:center; padding:2rem 1rem; font-size:.9rem; color:var(--muted) }
+    ul.features {
+      margin-top:1rem;
+      padding-left:1.5rem;
+      font-size:1.1rem;
+    }
+    ul.features li { margin-bottom:.6rem }
+
+    footer { text-align:center; padding:2rem 1rem; font-size:1rem; color:var(--muted) }
   </style>
 </head>
 <body>
@@ -97,7 +106,7 @@
 
   <div class="container">
 
-    <!-- Script 1 (copyable) -->
+    <!-- Script 1 (copyable + features) -->
     <section class="card">
       <h2>RX Forsakened</h2>
       <p>Ready to use. Click below to copy.</p>
@@ -105,6 +114,13 @@
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Redexe19/RXGUIV1/TEMPLATE"))()
       </div>
       <button class="btn" onclick="copyScript('script1')">Copy Script</button>
+
+      <h3 style="margin-top:1.5rem; font-size:1.5rem;">Features</h3>
+      <ul class="features">
+        <li>Feature 1 (placeholder)</li>
+        <li>Feature 2 (placeholder)</li>
+        <li>Feature 3 (placeholder)</li>
+      </ul>
     </section>
 
     <!-- Script 2 -->
@@ -123,16 +139,6 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/Redexe19/RXGUIV1/TEMP
     <section class="card">
       <h2>Script #4</h2>
       <p>Coming Soon...</p>
-    </section>
-
-    <!-- Features -->
-    <section class="card">
-      <h2>Features</h2>
-      <ul>
-        <li>Feature 1 (placeholder)</li>
-        <li>Feature 2 (placeholder)</li>
-        <li>Feature 3 (placeholder)</li>
-      </ul>
     </section>
 
   </div>
