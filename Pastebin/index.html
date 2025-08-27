@@ -27,16 +27,16 @@
       font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Ubuntu, Arial, sans-serif;
       background: var(--bg);
       color: var(--fg);
-      font-size: 1.2rem; /* bigger base text */
+      font-size: 1rem; /* match 2nd site size */
     }
 
     header { padding:2rem 1rem; text-align:center; position:relative }
-    h1 { font-size:clamp(2.5rem,5vw,3.2rem); margin-bottom:.3rem }
-    .sub { color:var(--muted); font-size:1.2rem }
+    h1 { font-size:clamp(2rem,4vw,2.8rem); margin-bottom:.3rem }
+    .sub { color:var(--muted); font-size:1rem }
 
     .theme-toggle { position:absolute; right:1rem; top:1.5rem; display:flex; gap:.5rem }
     .icon-btn { background:transparent; border:0; cursor:pointer; padding:.5rem }
-    .icon { width:24px; height:24px; stroke:var(--fg); }
+    .icon { width:22px; height:22px; stroke:var(--fg); }
 
     .container { max-width:1000px; margin:0 auto; padding:2rem 1rem; display:grid; gap:1.5rem }
     .card {
@@ -45,21 +45,21 @@
       box-shadow:0 6px 20px rgba(0,0,0,.2);
       padding:2rem;
     }
-    .card h2 { font-size:1.8rem; margin-bottom:.8rem }
-    .card p { color:var(--muted); margin-bottom:1.2rem; font-size:1.2rem }
+    .card h2 { margin-bottom:.5rem; font-size:1.6rem }
+    .card p { color:var(--muted); margin-bottom:1rem }
 
     .btn {
       background: var(--btn);
       color:#fff;
       border:none;
       border-radius:12px;
-      padding:.9rem 1.5rem;
-      font-size:1.1rem;
+      padding:.8rem 1.4rem;
       font-weight:600;
       cursor:pointer;
       transition: background .2s ease, transform .1s ease;
       text-decoration:none;
       display:inline-block;
+      font-size:1rem;
     }
     .btn:hover { background: var(--btn-hover); transform:translateY(-2px) }
 
@@ -68,7 +68,7 @@
       border-radius:10px;
       padding:1rem;
       font-family: monospace;
-      font-size:1.05rem; /* bigger script font */
+      font-size:.95rem;
       overflow-x:auto;
       margin-bottom:1rem;
       white-space:pre;
@@ -76,13 +76,13 @@
     .theme-light .script-box { background:#f9fafb }
 
     ul.features {
-      margin-top:1rem;
+      margin-top:.5rem;
       padding-left:1.5rem;
-      font-size:1.1rem;
+      font-size:1rem;
     }
-    ul.features li { margin-bottom:.6rem }
+    ul.features li { margin-bottom:.4rem }
 
-    footer { text-align:center; padding:2rem 1rem; font-size:1rem; color:var(--muted) }
+    footer { text-align:center; padding:2rem 1rem; font-size:.9rem; color:var(--muted) }
   </style>
 </head>
 <body>
@@ -106,12 +106,12 @@
 
   <div class="container">
 
-    <!-- Script 1 (copyable + features) -->
+    <!-- Script 1 -->
 <section class="card">
   <h2>RX Forsakened</h2>
   <p>Ready to use. Click below to copy.</p>
   <div class="script-box" id="script1">
-loadstring(game:HttpGet("https://raw.githubusercontent.com/Redexe19/RXGUIV1/refs/heads/main/RX%20Forsaken/RX_Forsakened"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Redexe19/RXGUIV1/TEMPLATE"))()
   </div>
   <button class="btn" onclick="copyScript('script1')">Copy Script</button>
 
@@ -222,23 +222,10 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/Redexe19/RXGUIV1/refs
   </div>
 </section>
 
-    <!-- Script 2 -->
-    <section class="card">
-      <h2>Script #2</h2>
-      <p>Coming Soon...</p>
-    </section>
-
-    <!-- Script 3 -->
-    <section class="card">
-      <h2>Script #3</h2>
-      <p>Coming Soon...</p>
-    </section>
-
-    <!-- Script 4 -->
-    <section class="card">
-      <h2>Script #4</h2>
-      <p>Coming Soon...</p>
-    </section>
+    <!-- Placeholder cards -->
+    <section class="card"><h2>Script #2</h2><p>Coming Soon...</p></section>
+    <section class="card"><h2>Script #3</h2><p>Coming Soon...</p></section>
+    <section class="card"><h2>Script #4</h2><p>Coming Soon...</p></section>
 
   </div>
 
@@ -249,7 +236,6 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/Redexe19/RXGUIV1/refs
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // theme
     const body = document.body;
     const saved = localStorage.getItem('theme');
     if (saved === 'light') body.classList.add('theme-light');
@@ -266,7 +252,6 @@ loadstring(game:HttpGet("https://raw.githubusercontent.com/Redexe19/RXGUIV1/refs
     document.getElementById('darkBtn').addEventListener('click', () => setTheme('dark'));
     if (!saved) setTheme('dark');
 
-    // copy function
     function copyScript(id) {
       const text = document.getElementById(id).innerText;
       navigator.clipboard.writeText(text).then(() => {
