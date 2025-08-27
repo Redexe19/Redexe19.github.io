@@ -1,27 +1,25 @@
-<!DOCTYPE html><html lang="en">
-<head>
+<!DOCTYPE html><html lang="en"><head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>RX Exploits</title>
   <meta name="description" content="RX Exploits Hub — Roblox Scripts, Executors, and Lua Obfuscation." />
   <style>
     :root {
+      --fg: #e5e7eb;
+      --bg: #0f141a;
+      --card: #171c22;
+      --btn: #dc2626;
+      --btn-hover: #b91c1c;
+      --muted: #9ca3af;
+    }
+    .theme-light {
       --fg: #111827;
       --bg: #f3f4f6;
       --card: #ffffff;
-      --btn: #2563eb;
-      --btn-hover: #1d4ed8;
+      --btn: #ef4444;
+      --btn-hover: #dc2626;
       --muted: #6b7280;
-    }.theme-dark {
-  --fg: #e5e7eb;
-  --bg: #0f141a;
-  --card: #171c22;
-  --btn: #3b82f6;
-  --btn-hover: #2563eb;
-  --muted: #9ca3af;
-}
-
-* { box-sizing:border-box; margin:0; padding:0 }
+    }* { box-sizing:border-box; margin:0; padding:0 }
 body {
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Inter, Ubuntu, Arial, sans-serif;
   background: var(--bg);
@@ -37,35 +35,41 @@ h1 { font-size:clamp(2rem,4vw,2.8rem); margin-bottom:.3rem }
 .icon-btn { background:transparent; border:0; cursor:pointer; padding:.5rem }
 .icon { width:22px; height:22px; stroke:var(--fg); }
 
-.container { max-width:800px; margin:0 auto; padding:2rem 1rem }
+.container { max-width:1000px; margin:0 auto; padding:2rem 1rem; display:grid; gap:1.5rem }
 .card {
   background: var(--card);
   border-radius:18px;
-  box-shadow:0 6px 20px rgba(0,0,0,.1);
+  box-shadow:0 6px 20px rgba(0,0,0,.2);
   padding:2rem;
-  text-align:center;
 }
+.card h2 { margin-bottom:.5rem }
+.card p { color:var(--muted); margin-bottom:1rem }
 
-.btns { display:flex; flex-direction:column; gap:1rem; margin-top:1.5rem }
+.btns { display:flex; flex-wrap:wrap; gap:1rem; margin-top:1rem }
 .btn {
   background: var(--btn);
   color:#fff;
   border:none;
   border-radius:12px;
-  padding:1rem;
+  padding:.9rem 1.4rem;
   font-weight:600;
   cursor:pointer;
-  transition: background .2s ease;
+  transition: background .2s ease, transform .1s ease;
   text-decoration:none;
-  display:block;
+  display:inline-block;
 }
-.btn:hover { background: var(--btn-hover) }
+.btn:hover { background: var(--btn-hover); transform:translateY(-2px) }
+
+.list { margin-top:1rem }
+.item { padding:.6rem 0; border-bottom:1px solid rgba(255,255,255,.08); color:var(--fg) }
+.theme-light .item { border-bottom:1px solid rgba(0,0,0,.08) }
 
 footer { text-align:center; padding:2rem 1rem; font-size:.9rem; color:var(--muted) }
 
   </style>
 </head>
-<body>  <header>
+<body>
+  <header>
     <div class="theme-toggle">
       <button class="icon-btn" id="lightBtn" title="Light mode">
         <svg class="icon" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -82,15 +86,55 @@ footer { text-align:center; padding:2rem 1rem; font-size:.9rem; color:var(--mute
     <h1>RX Exploits</h1>
     <div class="sub">Roblox Scripts • Executors • Lua Obfuscation</div>
   </header>  <div class="container">
+    <!-- Roblox Scripts -->
     <section class="card">
-      <h2>Explore RX Exploits</h2>
+      <h2>Roblox Scripts</h2>
+      <p>Hand-picked scripts for Roblox exploiting.</p>
       <div class="btns">
-        <!-- EASY TO EDIT LINKS -->
-        <a href="#" target="_blank" class="btn">Roblox Scripts</a>
-        <a href="#" target="_blank" class="btn">Roblox Executors</a>
-        <a href="#" target="_blank" class="btn">Lua Obfuscation</a>
+        <a href="#" class="btn">Script Hub</a>
+        <a href="#" class="btn">Top Trending Scripts</a>
       </div>
-    </section>
+      <div class="list">
+        <div class="item">ESP & Aimbot Tools</div>
+        <div class="item">Admin Commands</div>
+        <div class="item">Auto-Farm Scripts</div>
+      </div>
+    </section><!-- Roblox Executors -->
+<section class="card">
+  <h2>Roblox Executors</h2>
+  <p>Information and links to executors.</p>
+  <div class="btns">
+    <a href="#" class="btn">Download Executors</a>
+    <a href="#" class="btn">Executor Safety</a>
+  </div>
+  <div class="list">
+    <div class="item">Script-Ware</div>
+    <div class="item">Synapse X</div>
+    <div class="item">Krnl</div>
+  </div>
+</section>
+
+<!-- Lua Obfuscation -->
+<section class="card">
+  <h2>Lua Obfuscation</h2>
+  <p>Protecting your Lua scripts from leaks and theft.</p>
+  <div class="btns">
+    <a href="#" class="btn">Obfuscation Guide</a>
+    <a href="#" class="btn">Compare Obfuscators</a>
+  </div>
+  <div class="list">
+    <div class="item">String Encryption</div>
+    <div class="item">Control Flow Tricks</div>
+    <div class="item">Anti-Tamper Methods</div>
+  </div>
+</section>
+
+<!-- About -->
+<section class="card">
+  <h2>About RX Exploits</h2>
+  <p>Made by RX. This hub gathers Roblox scripts, executor info, and Lua protection guides in one place.</p>
+</section>
+
   </div>  <footer>
     © <span id="year"></span> RX Exploits | Made by RX
   </footer>  <script>
@@ -98,15 +142,15 @@ footer { text-align:center; padding:2rem 1rem; font-size:.9rem; color:var(--mute
 
     const body = document.body;
     const saved = localStorage.getItem('theme');
-    if (saved === 'dark') body.classList.add('theme-dark');
+    if (saved === 'light') body.classList.add('theme-light');
 
     const setTheme = (mode) => {
-      if (mode === 'dark') {
-        body.classList.add('theme-dark');
-        localStorage.setItem('theme','dark');
-      } else {
-        body.classList.remove('theme-dark');
+      if (mode === 'light') {
+        body.classList.add('theme-light');
         localStorage.setItem('theme','light');
+      } else {
+        body.classList.remove('theme-light');
+        localStorage.setItem('theme','dark');
       }
     };
 
@@ -114,8 +158,7 @@ footer { text-align:center; padding:2rem 1rem; font-size:.9rem; color:var(--mute
     document.getElementById('darkBtn').addEventListener('click', () => setTheme('dark'));
 
     if (!saved) {
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      setTheme(prefersDark ? 'dark' : 'light');
+      setTheme('dark'); // default dark
     }
   </script></body>
 </html>
