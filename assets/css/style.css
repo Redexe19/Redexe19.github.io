@@ -121,13 +121,18 @@ button, input{font:inherit}
   margin:0;
   text-align:center;
   font-size:clamp(3.3rem, 9vw, 7.1rem);
-  line-height:.92;
-  letter-spacing:-.07em;
+  line-height:1;
+  letter-spacing:-.05em;
+  padding-right:.08em;
+  overflow:visible;
 }
 .big-title.red{
+  display:inline-block;
+  padding-right:.04em;
   background:linear-gradient(180deg, #ffffff 0%, #ffc4c4 30%, #ff6969 68%, #d11818 100%);
   -webkit-background-clip:text;
   background-clip:text;
+  -webkit-text-fill-color:transparent;
   color:transparent;
 }
 .eyebrow{
@@ -354,13 +359,20 @@ button, input{font:inherit}
 }
 .hub-title{
   font-size:clamp(2.8rem, 6vw, 5.6rem);
-  line-height:.92;
-  letter-spacing:-.07em;
+  line-height:1;
+  letter-spacing:-.05em;
   margin:0 0 16px;
+  padding-right:.08em;
+  overflow:visible;
 }
 .hub-title span{
+  display:inline-block;
+  padding-right:.04em;
   background:linear-gradient(180deg, #ffffff 0%, #ffa9a9 42%, #ff5050 78%, #b81414 100%);
-  -webkit-background-clip:text;background-clip:text;color:transparent;
+  -webkit-background-clip:text;
+  background-clip:text;
+  -webkit-text-fill-color:transparent;
+  color:transparent;
 }
 .hub-text{
   color:var(--muted);
