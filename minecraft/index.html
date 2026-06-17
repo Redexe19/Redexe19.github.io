@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RX Minecraft</title>
+  <meta name="description" content="RX Minecraft page for mods, clients, tools, downloads, features, and links." />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="../index.html">
+          <span class="brand-badge">RX</span>
+          <div>
+            <div>RX Minecraft</div>
+            <div class="brand-sub">Minecraft page</div>
+          </div>
+        </a>
+        <nav class="nav">
+          <a href="../index.html">Home</a>
+          <a class="active" href="index.html">Minecraft</a>
+          <a href="../roblox/index.html">Roblox</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="hero">
+        <a class="back-link" href="../index.html">← Back to Home</a>
+        <h1 class="big-title red">MINECRAFT</h1>
+        <div class="eyebrow">Mods • Clients • Tools</div>
+        <p class="hero-desc">
+          Everything you need for my Minecraft stuff — mods, clients, project pages, features, licenses,
+          source pages, and download links.
+        </p>
+
+        <div class="cta-row">
+          <a class="cta-btn" href="#featured">Featured</a>
+          <a class="cta-btn" href="#essential">Essential Mods</a>
+          <a class="cta-btn" href="#clients">Clients</a>
+          <a class="cta-btn primary" href="#tools">Tools</a>
+        </div>
+
+        <div class="divider"></div>
+      </section>
+
+      <section class="section" id="featured">
+        <div class="section-title">Featured project</div>
+        <div id="mc-featured"></div>
+      </section>
+
+      <section class="section" id="essential">
+        <div class="section-title">Essential mods</div>
+        <div class="grid two" id="mc-essential"></div>
+      </section>
+
+      <section class="section" id="clients">
+        <div class="section-title">Clients</div>
+        <div class="grid two" id="mc-clients"></div>
+      </section>
+
+      <section class="section" id="tools">
+        <div class="section-title">Other tools</div>
+        <div class="grid two" id="mc-tools"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <div>RX Minecraft page — edit data in <strong>assets/js/minecraft-data.js</strong>.</div>
+        <div class="footer-links">
+          <a href="../index.html">Home</a>
+          <a href="#featured">Featured</a>
+          <a href="#essential">Essential</a>
+          <a href="#clients">Clients</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="../assets/js/renderer.js"></script>
+  <script src="../assets/js/minecraft-data.js"></script>
+  <script>
+    renderFeatured('mc-featured', minecraftFeatured);
+    renderGrid('mc-essential', minecraftEssential);
+    renderGrid('mc-clients', minecraftClients);
+    renderGrid('mc-tools', minecraftTools);
+  </script>
+</body>
+</html>

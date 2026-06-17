@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RX Roblox</title>
+  <meta name="description" content="RX Roblox page for script hubs, project pages, utilities, showcases, and links." />
+  <link rel="stylesheet" href="../assets/css/style.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <header class="topbar">
+      <div class="topbar-inner">
+        <a class="brand" href="../index.html">
+          <span class="brand-badge">RX</span>
+          <div>
+            <div>RX Roblox</div>
+            <div class="brand-sub">Roblox page</div>
+          </div>
+        </a>
+        <nav class="nav">
+          <a href="../index.html">Home</a>
+          <a href="../minecraft/index.html">Minecraft</a>
+          <a class="active" href="index.html">Roblox</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="container">
+      <section class="hero">
+        <a class="back-link" href="../index.html">← Back to Home</a>
+        <h1 class="big-title red">ROBLOX</h1>
+        <div class="eyebrow">Projects • Hubs • Utilities</div>
+        <p class="hero-desc">
+          My Roblox page for projects, hubs, UIs, tools, script pages, showcases, and whatever else I want to publish here.
+        </p>
+
+        <div class="cta-row">
+          <a class="cta-btn" href="#featured">Featured</a>
+          <a class="cta-btn" href="#hubs">Hubs</a>
+          <a class="cta-btn" href="#utilities">Utilities</a>
+          <a class="cta-btn primary" href="#showcases">Showcases</a>
+        </div>
+
+        <div class="divider"></div>
+      </section>
+
+      <section class="section" id="featured">
+        <div class="section-title">Featured project</div>
+        <div id="rb-featured"></div>
+      </section>
+
+      <section class="section" id="hubs">
+        <div class="section-title">Project hubs</div>
+        <div class="grid two" id="rb-hubs"></div>
+      </section>
+
+      <section class="section" id="utilities">
+        <div class="section-title">Utilities</div>
+        <div class="grid two" id="rb-utils"></div>
+      </section>
+
+      <section class="section" id="showcases">
+        <div class="section-title">Showcases</div>
+        <div class="grid two" id="rb-showcases"></div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <div>RX Roblox page — edit data in <strong>assets/js/roblox-data.js</strong>.</div>
+        <div class="footer-links">
+          <a href="../index.html">Home</a>
+          <a href="#featured">Featured</a>
+          <a href="#hubs">Hubs</a>
+          <a href="#utilities">Utilities</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="../assets/js/renderer.js"></script>
+  <script src="../assets/js/roblox-data.js"></script>
+  <script>
+    renderFeatured('rb-featured', robloxFeatured);
+    renderGrid('rb-hubs', robloxHubs);
+    renderGrid('rb-utils', robloxUtilities);
+    renderGrid('rb-showcases', robloxShowcases);
+  </script>
+</body>
+</html>
