@@ -6,9 +6,9 @@ const robloxFeatured = [
     description: "Main Roblox page for your script hub, tool pages, supported experiences, features, and update info.",
     meta: ["Type: Hub", "Language: Lua", "License: Private"],
     features: [
-      "Main hub/project card",
-      "Buttons for page, source, docs, and Discord",
-      "Easy placeholder structure"
+      "Main hub project entry",
+      "Page, source, docs, and Discord links",
+      "Quick project status"
     ],
     buttons: [
       { label: "Open", url: "#", primary: true },
@@ -23,8 +23,8 @@ const robloxHubs = [
   {
     title: "Main Hub",
     tag: "Hub",
-    description: "Use this card for your main script hub or primary Roblox project page.",
-    meta: ["Status: Active", "Editable"],
+    description: "Main script hub and supported-game notes.",
+    meta: ["Status: Active", "Type: Hub"],
     features: [
       "Feature overview",
       "Supported game list",
@@ -39,8 +39,8 @@ const robloxHubs = [
   {
     title: "UI Library Tests",
     tag: "UI",
-    description: "A project page card for your Roblox UI designs, layouts, and interface experiments.",
-    meta: ["Type: UI", "Editable"],
+    description: "Roblox UI layouts, interface tests, and design experiments.",
+    meta: ["Type: UI", "Status: Testing"],
     features: [
       "Showcase UI concepts",
       "Store versions or demos",
@@ -58,7 +58,7 @@ const robloxUtilities = [
   {
     title: "Teleport Utility",
     tag: "Utility",
-    description: "Placeholder card for a teleport tool, helper script, or utility page.",
+    description: "Teleport helper script and utility page.",
     meta: ["Type: Utility", "License: TBA"],
     features: [
       "Explain what it does",
@@ -74,8 +74,8 @@ const robloxUtilities = [
   {
     title: "ESP / Visual Tools",
     tag: "Visual",
-    description: "Use this for visual tools, overlay systems, or interface-based projects.",
-    meta: ["Type: Visual", "Editable"],
+    description: "Visual tools, overlay systems, and interface-based projects.",
+    meta: ["Type: Visual", "Status: Draft"],
     features: [
       "Feature list area",
       "Link buttons ready",
@@ -93,8 +93,8 @@ const robloxShowcases = [
   {
     title: "Project Showcase",
     tag: "Showcase",
-    description: "A showcase entry for updates, demos, or a project spotlight.",
-    meta: ["Type: Showcase", "Editable"],
+    description: "Updates, demos, and project spotlights.",
+    meta: ["Type: Showcase", "Status: Draft"],
     features: [
       "Good for update posts",
       "Use for release highlights",
@@ -109,8 +109,8 @@ const robloxShowcases = [
   {
     title: "Small Side Project",
     tag: "Extra",
-    description: "Use this slot for extra Roblox projects you want to display without overcomplicating the page.",
-    meta: ["Status: Side Project", "Editable"],
+    description: "Small Roblox projects that do not need their own full page yet.",
+    meta: ["Status: Side Project", "Links: TBA"],
     features: [
       "Simple description",
       "Feature bullets",

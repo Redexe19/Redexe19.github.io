@@ -6,9 +6,9 @@ const minecraftFeatured = [
     description: "Main Minecraft client page with modules, features, version support, source page, and download links.",
     meta: ["Type: Client", "Loader: Custom", "License: Private"],
     features: [
-      "Clean branded project page",
-      "Feature list and release info",
-      "Buttons for download, source, docs, and Discord"
+      "Project overview and release notes",
+      "Feature list and version support",
+      "Download, source, docs, and Discord links"
     ],
     buttons: [
       { label: "Download", url: "#", primary: true },
@@ -55,7 +55,7 @@ const minecraftEssential = [
   {
     title: "Dual Drive",
     tag: "Co-op Mod",
-    description: "Project page placeholder for your split-control co-op Minecraft mod.",
+    description: "Split-control co-op Minecraft mod concept with driver and observer roles.",
     meta: ["Status: WIP", "License: TBA"],
     features: [
       "One body, two players",
@@ -71,12 +71,12 @@ const minecraftEssential = [
   {
     title: "Utility Mod Pack",
     tag: "Bundle",
-    description: "A card for listing smaller Minecraft tools, helper mods, or side projects.",
-    meta: ["Status: Custom", "Links: Editable"],
+    description: "Smaller Minecraft tools, helper mods, and side projects collected in one place.",
+    meta: ["Status: Custom", "Links: TBA"],
     features: [
       "Useful helper projects",
       "One place for smaller releases",
-      "Clean card layout"
+      "Compact project cards"
     ],
     buttons: [
       { label: "Downloads", url: "#", primary: true },
@@ -90,12 +90,12 @@ const minecraftClients = [
   {
     title: "Veyra Client Lite",
     tag: "Client",
-    description: "A lighter page entry for a smaller or alternate client build.",
+    description: "A smaller or alternate Veyra build for lighter setups.",
     meta: ["Build: Lite", "License: Private"],
     features: [
       "Simple overview card",
       "Download and docs buttons",
-      "Can be renamed to anything"
+      "Alternate build slot"
     ],
     buttons: [
       { label: "Download", url: "#", primary: true },
@@ -106,7 +106,7 @@ const minecraftClients = [
   {
     title: "Experimental Client",
     tag: "Beta",
-    description: "Use this card for test clients, previews, or experimental projects.",
+    description: "Test client builds, previews, and experimental project notes.",
     meta: ["Status: Beta", "Version: TBA"],
     features: [
       "Good for previews",
@@ -125,8 +125,8 @@ const minecraftTools = [
   {
     title: "Project Docs",
     tag: "Docs",
-    description: "Use this for documentation, setup guides, FAQs, or feature explanation pages.",
-    meta: ["Type: Docs", "Editable"],
+    description: "Documentation, setup guides, FAQs, and feature notes.",
+    meta: ["Type: Docs", "Status: Draft"],
     features: [
       "Guide page link",
       "FAQ or wiki link",
@@ -141,8 +141,8 @@ const minecraftTools = [
   {
     title: "Community / Discord",
     tag: "Social",
-    description: "A clean card for your Discord server, updates page, or community hub.",
-    meta: ["Type: Community", "Editable"],
+    description: "Discord, updates, and community links.",
+    meta: ["Type: Community", "Discord"],
     features: [
       "Invite link button",
       "Updates or announcements",

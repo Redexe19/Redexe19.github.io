@@ -1,25 +1,20 @@
-# RX EXPLOITS
+# Redexe19.github.io
 
-This is my official website that serves as a hub for my Roblox scripts, executors, Lua obfuscation methods, and personal projects.
+Static GitHub Pages site for Redexe19's Minecraft projects, Roblox projects, and links.
 
-⚠️ **Important Notice**  
-You are **not allowed** to copy, modify, redistribute, plagiarize, or edit any part of this website, including but not limited to:
-- Source code  
-- UI design  
-- Text content  
-- Images and assets  
+## Structure
 
-All rights are reserved unless explicit written permission is granted by me.
+- `index.html` - main hub page
+- `minecraft/index.html` - Minecraft project page
+- `roblox/index.html` - Roblox project page
+- `assets/css/style.css` - shared styling
+- `assets/js/*-data.js` - project card data
 
----
+## Editing Cards
 
-## Features
-- 🚀 Roblox Script Hub  
-- 💻 Executors and utilities  
-- 🔐 Lua Obfuscation
+Most project cards are controlled by the data files in `assets/js/`.
+Update the title, description, metadata, features, and buttons there.
 
----
+## License
 
-## Disclaimer
-This website is provided for **educational and personal use only**.  
-I am not responsible for how others may use the information, scripts, or tools linked here.
+All rights reserved unless explicit permission is granted by Redexe19.
